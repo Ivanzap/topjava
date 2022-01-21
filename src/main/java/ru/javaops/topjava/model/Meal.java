@@ -1,6 +1,7 @@
 package ru.javaops.topjava.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import org.hibernate.validator.constraints.Range;
 import ru.javaops.topjava.util.validation.NoHtml;
@@ -39,6 +40,7 @@ public class Meal extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference
+    @Schema(hidden = true)
     private User user;
 
     public Meal(Integer id, LocalDateTime dateTime, String description, int calories) {
